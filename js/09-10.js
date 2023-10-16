@@ -34,15 +34,15 @@ const inputEl = document.querySelector("[data-input]");
 const outputEl = document.querySelector("[data-output]");
 const inputLength = document.querySelector("[data-length]");
 
-outputEl.addEventListener("input", (e) => {
+inputEl.addEventListener("input", (e) => {
     outputEl.textContent = e.currentTarget.value;
 });
 
-inputLength.addEventListener("submit", () => {
-    if (inputLength.length >= 6) {
-    inputLength.style.border = "3px", "green";
+inputLength.addEventListener("blur", () => {
+    if (inputEl.value === inputLength.dataset.length) {
+    inputLength.classList.add("valid");
 } else {
-    inputLength.style.border = "3px", "red";
+    inputLength.classList.add("invalid");
 };
 });
 
@@ -50,6 +50,6 @@ inputLength.addEventListener("submit", () => {
 const inputFontSize = document.querySelector("[data-fontSize]");
 const spanText = document.querySelector("[data-text]");
 
-inputFontSize.addEventListener("click", () => {
-    spanText.style.size = 23;
+inputFontSize.addEventListener("input", () => {
+    spanText.style.FontSize = `${input.value}px`;
 });
